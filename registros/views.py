@@ -92,17 +92,14 @@ def reporte_semanal(request):
 
 
 
-def exportar_reporte_semanal_pdf(request):
+def exportar_pdf(request):
     fecha_inicio = request.GET.get('fecha_inicio')
     fecha_fin = request.GET.get('fecha_fin')
 
     if not fecha_inicio or not fecha_fin:
-        return HttpResponseBadRequest("Debes proporcionar un rango de fechas válido")
+        return HttpResponse("Debes proporcionar un rango de fechas", status=400)
 
-    try:
-        return generar_pdf_reporte_semanal(fecha_inicio, fecha_fin)
-    except Exception as e:
-        return HttpResponse(f"Error al generar el PDF: {e}", status=500)
+    return generar_pdf_reporte_semanal(fecha_inicio, fecha_fin)
 
 
 
