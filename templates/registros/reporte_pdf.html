@@ -21,21 +21,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for empleado, horas in resumen.items %}
-            <tr>
-                <td>{{ empleado }}</td>
-                <td>{{ horas }}</td>
-                <td>
-                    {% if horas < 40 %}
-                        Incompleto
-                    {% elif horas > 40 %}
-                        Exceso
-                    {% else %}
-                        Completo
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
+           {% for empleado, data in resumen.items %}
+<tr>
+  <td>{{ empleado }}</td>
+  <td>{{ data.formateado }}</td>
+  <td>{{ data.estado }}</td>
+</tr>
+{% endfor %}
         </tbody>
     </table>
 </body>
