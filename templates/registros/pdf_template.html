@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Helvetica, sans-serif; font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #000; padding: 6px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Employee Work Hours Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in registros %}
+            <tr>
+                <td>{{ r.nombre_empleado }}</td>
+                <td>{{ r.fecha }}</td>
+                <td>{{ r.hora_inicio }}</td>
+                <td>{{ r.hora_fin }}</td>
+                <td>{{ r.total_horas_formateado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
