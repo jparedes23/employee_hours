@@ -21,17 +21,15 @@
                 <th>Total</th>
             </tr>
         </thead>
-        <tbody>
-            {% for r in registros %}
-            <tr>
-                <td>{{ r.nombre_empleado }}</td>
-                <td>{{ r.fecha }}</td>
-                <td>{{ r.hora_inicio }}</td>
-                <td>{{ r.hora_fin }}</td>
-                <td>{{ r.total_horas_formateado }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+       <tbody>
+{% for empleado, data in resumen.items %}
+<tr>
+  <td>{{ empleado }}</td>
+  <td>{{ data.formateado }}</td>
+  <td>{{ data.estado }}</td>
+</tr>
+{% endfor %}
+</tbody>
     </table>
 </body>
 </html>

@@ -8,8 +8,6 @@ from django.db.models import Sum
 from .pdf import generar_pdf_reporte_semanal
 
 
-
-
 def registrar_horas(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
