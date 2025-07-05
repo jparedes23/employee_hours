@@ -91,7 +91,6 @@ def reporte_semanal(request):
 
 
 
-
 def exportar_pdf(request):
     fecha_inicio = request.GET.get('fecha_inicio')
     fecha_fin = request.GET.get('fecha_fin')
