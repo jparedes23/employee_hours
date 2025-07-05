@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from .forms import RegistroForm
 from datetime import date
@@ -96,9 +97,12 @@ def exportar_reporte_semanal_pdf(request):
     fecha_fin = request.GET.get('fecha_fin')
 
     if not fecha_inicio or not fecha_fin:
-        return HttpResponse("Debes proporcionar un rango de fechas", status=400)
+        return HttpResponseBadRequest("Debes proporcionar un rango de fechas válido")
 
-    return generar_pdf_reporte_semanal(fecha_inicio, fecha_fin)
+    try:
+        return generar_pdf_reporte_semanal(fecha_inicio, fecha_fin)
+    except Exception as e:
+        return HttpResponse(f"Error al generar el PDF: {e}", status=500)
 
 
 
